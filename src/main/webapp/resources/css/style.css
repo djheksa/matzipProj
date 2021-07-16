@@ -1,0 +1,259 @@
+@charset "UTF-8";
+/* -------------------------공통---------------------------------- */
+
+* {
+  box-sizing: border-box;
+  font-family: "Hi Melody", cursive;
+ 
+}
+html{
+	background-image: url("img/matzip.png");
+ 	background-size:cover;
+}
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+button {
+  cursor: pointer;
+}
+
+.main {
+  height: 500px;
+  margin-top: 100px;
+  padding-top: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.section {
+  height: auto;
+  width:80%;
+  min-height: 100%;
+  margin-bottom: 300px;
+}
+#st{
+	font-size : 20pt;
+}
+/* -----------------------------------회원가입 -------------------------------------- */
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.signUp {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 300px;
+  height: 500px;
+}
+
+/* input 부분 */
+.signUp_title {
+  text-align: left;
+}
+
+.warning {
+  display: none;
+}
+
+.form_input-block input {
+  width: 100%;
+  padding: 9px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+#userId {
+  float: left;
+  display: inline-block;
+  width: 80%;
+  padding: 9px;
+}
+
+#userPhone1,
+#userPhone2,
+#userPhone3 {
+  width: 30%;
+}
+
+.form_label {
+  float: left;
+}
+
+input::placeholder {
+  color: #ced4da;
+}
+
+#phone-Box {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* input 애니메이션 */
+#userPwd:focus,
+#userName:focus,
+#userAge:focus {
+  width: 90%;
+  transition: width 0.4s ease-in-out;
+}
+
+#userId:focus {
+  width: 75%;
+  transition: width 0.4s ease-in-out;
+}
+
+/* 버튼 부분 */
+.btn {
+  width: 100%;
+}
+
+.button2 {
+  width: 49%;
+  height: 50px;
+  margin-top: 20px;
+}
+
+.button2 {
+  border-radius: 5px;
+  background-color: #00c471;
+  color: white;
+  font-size: 18px;
+  border: 0;
+}
+
+.button2:hover {
+  background-color: #00b265;
+  cursor: pointer;
+}
+
+.fa-user-check {
+  /* 아이디 중복체크 아이콘 */
+  border-radius: 5px;
+  background-color: #00c471;
+  color: white;
+  font-size: 25px;
+  border: 1px solid #ced4da;
+  align-content: center;
+}
+.fa-user-check:hover {
+  /* 아이디 중복체크 아이콘 */
+  background-color: #00b265;
+  cursor: pointer;
+}
+
+#checkIcon {
+  background-color: white;
+  border: 0;
+}
+
+/* ------------------------------------------메인페이지 ------------------------------------------- */
+button:hover {
+  cursor: pointer;
+}
+
+.bg {
+  width: 100%;
+  height: 200px;
+  background-color: white;
+}
+
+.box {
+  width: 100%;
+  margin-top: 20%;
+  display: flex;
+  flex-direction: row;
+}
+.mainBtn {
+  width: 150px;
+  height: 100px;
+  border: 10px solid #c09f1e;
+  border-radius: 70px;
+  font-size: 40px;
+  margin: 0px -5px;
+
+  background-color: white;
+}
+
+.line {
+  width: 50%;
+  height: 10px;
+  background-color: #c09f1e;
+  display: flex;
+  justify-content: space-around;
+  align-self: center;
+}
+
+.line a {
+  text-decoration: none;
+  color: black;
+}
+
+.circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: white;
+  border: 5px solid #c09f1e;
+  align-self: inherit;
+}
+
+.B {
+  display: none;
+}
+
+.text {
+  margin-top: 30px;
+  font-size: 20px;
+}
+
+.leftBtn {
+  margin-left: 15%;
+}
+
+/* 메인뷰 반응형 웹 */
+@media screen and (max-width: 650px) {
+  .header {
+    flex-direction: column;
+  }
+
+  .mainBtn {
+    width: 20%;
+    height: 70px;
+    border: 10px solid #c09f1e;
+    border-radius: 35px;
+    font-size: 30px;
+    margin: 0px -5px;
+
+    background-color: white;
+  }
+
+  .box {
+    width: 100%;
+    padding-left: 15%;
+    margin-top: 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .circle {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: white;
+    border: 5px solid #c09f1e;
+    align-self: inherit;
+  }
+
+  .text {
+    margin-top: 20px;
+    font-size: 20px;
+  }
+}

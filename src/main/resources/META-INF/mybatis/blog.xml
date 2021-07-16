@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gb.myproject.blog.mapper.BlogMapper"> <!-- namespace : java 인터페이스와 매핑될 파일 지정. -->
+
+	<!-- 전체게시글 개수 -->
+	<select id="blogListCount" resultType="int">
+		select count(*) from blog
+	</select>
+	<!-- 전체게시글 -->
+	<select id="selectBlogList" resultType="Blog">
+		select * from blog
+	</select>
+	<!-- 전체게시글 카테고리별 정렬 -->
+	<select id="selectCategoryList" resultType="Blog">
+		select * from blog order by '#{category}' desc
+	</select>
+	<!-- 한 페이지 게시글 -->
+	<select id="getPagelist" parameterType="Page" resultType="Blog">
+		select * from blog order by
+		<if test='category == "idx"'>
+			idx desc
+		</if>
+		<if test='category == "b_recom"'>
+			b_recom desc
+		</if>
+		<if test='category == "b_count"'>
+			b_count desc
+		</if>
+		limit #{startNo},#{pageSize}
+	</select>
+	<!-- 글 하나 갖고오기 -->
+	<select id="selectBlog" parameterType="int" resultType="Blog">
+		select * from blog where idx=#{idx}
+	</select>
+ <!-- station 페이지에서 보여줄 추천높은 게시글 -->
+    <select id="selectBlogListMap" resultType="Blog">
+        select * from blog order by b_recom desc
+    </select>
+
+	<insert id="insertBlog" parameterType="Blog"
+		useGeneratedKeys="true" keyProperty="idx">
+		insert into
+		blog(subject,content,station,s_name,wdate,m_idx)
+		values
+		(#{subject},#{content},#{station},#{s_name},#{wdate},#{m_idx})
+	</insert>
+
+	<update id="updateBlog" parameterType="Blog">
+		update blog set
+		subject=#{subject},content=#{content},station=#{station},s_name=#{s_name}
+		where idx=#{idx}
+	</update>
+	<!-- 블로그글 삭제 -->
+	<delete id="deleteBlog" parameterType="int">
+		delete from blog where idx=#{idx}
+	</delete>
+
+	<!-- 이미지 가져오기 -->
+	<select id="selectImg" parameterType="int" resultType="Img">
+		select *
+		from img where b_idx=#{b_idx}
+	</select>
+	<!-- 이미지 저장 -->
+	<insert id="imgInsert" parameterType="Img">
+		insert into
+		img(img_name,b_idx)
+		values
+		(#{img_name},#{b_idx})
+	</insert>
+	<!-- 이미지 삭제 -->
+	<delete id="deleteImg" parameterType="java.util.HashMap">
+		delete from img where
+		idx=#{idx}
+	</delete>
+	<!-- 이미지 전체삭제 -->
+	<delete id="deleteALlImg" parameterType="int">
+		delete from img where
+		b_idx=#{b_idx}
+	</delete>
+	<!-- 이미지 수정 -->
+	<update id="updateImg" parameterType="Img">
+		update img set
+		img_name=#{img_name}
+		where idx=#{idx}
+	</update>
+
+
+	<!-- 내가쓴글 가져오기 -->
+	<select id="selectMyBlogList" parameterType="int"
+		resultType="Blog">
+		select * from blog where m_idx=#{m_idx}
+	</select>
+	<!-- 내가 쓴 글 카운트 -->
+	<select id="myListCount" resultType="int">
+		select count(*) from blog where m_idx=#{m_idx}
+	</select>
+	<!-- 추천수 증가 -->
+	<update id="updateRecom" parameterType="java.util.HashMap">
+		update blog set b_recom=b_recom+1 where idx=#{b_idx}
+	</update>
+	<!-- 조회수 -->
+	<update id="updateCount" parameterType="int">
+		update blog set b_count=b_count+1 where idx=#{idx}
+	</update>
+
+	<!-- 검색 SQL : 검색 기준 컬럼은 1)내용 2)작성자 3)제목 *** 동적 쿼리 *** -->
+	<select id="selectSearch" parameterType="Page" resultType="Blog">
+		SELECT * FROM blog
+		<if test='"역이름".equals(field)'>
+			where station like concat('%', #{findText},'%')
+		</if>
+		<if test='"맛집이름".equals(field)'>
+			where s_name like concat('%', #{findText},'%')
+		</if>
+		ORDER BY
+		<if test='category == "idx"'>
+			idx desc
+		</if>
+		<if test='category == "b_recom"'>
+			b_recom desc
+		</if>
+		<if test='category == "b_count"'>
+			b_count desc
+		</if>
+		limit #{startNo},#{pageSize}
+	</select>
+
+	<!-- 검색결과 갯수를 쿼리 실행 : 검색 결과 페이징을 위해서 필요합니다. -->
+	<select id="searchCount" parameterType="java.util.Map"
+		resultType="int">
+		SELECT count(*) FROM blog
+		<if test='"역이름".equals(field)'>
+			where station like concat('%', #{findText},'%')
+		</if>
+		<if test='"맛집이름".equals(field)'>
+			where s_name like concat('%', #{findText},'%')
+		</if>
+	</select>
+	<!-- 추천 중복방지 인서트 한 게시글당 한 멤버만 추천가능 -->
+	<insert id="insertRecom" parameterType="java.util.HashMap">
+		insert into
+		recom(b_idx,m_idx) values(#{b_idx},#{m_idx})
+	</insert>
+	<select id="selectRecom" parameterType="java.util.HashMap"
+		resultType="String">
+		select idx from recom where b_idx=#{b_idx} and
+		m_idx=#{m_idx}
+	</select>
+	<delete id="deleteRecom" parameterType="int">
+		delete from recom where
+		b_idx=#{b_idx}
+	</delete>
+</mapper>
+
+
+
+
+
+
+
+

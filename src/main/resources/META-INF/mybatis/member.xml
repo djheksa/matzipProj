@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gb.myproject.member999.mapper.MemberMapper"> <!-- namespace : java 인터페이스와 매핑될 파일 지정. -->
+	<!-- 카카오 로그인 이메일 체크 -->
+	<select id="selectKakaoLogin" parameterType="KakaoMember" resultType="Member">
+		select * from member999 where id=#{id}
+	</select>
+	<!-- 세션 갱신용 selectOne -->
+	<select id="selectOneMember" parameterType="int" resultType="Member">
+		select * from member999 where idx=#{idx}
+	</select>
+	<!--일반 로그인 -->
+	<select id="selectLogin" parameterType="java.util.HashMap" resultType="Member">
+		select * from member999 where id=#{id} and password=sha2(#{password},256)
+	</select>
+	<!-- 아이디 중복체크 -->
+	<select id="selectDoubleCheck" parameterType="String" resultType="Member">
+		select * from member999 where id=#{id}
+	</select>
+	<!-- 회원가입 -->
+	<insert id="insertMember" parameterType="Member">
+		insert into member999(name,password,id,phone,age) values (#{name},sha2(#{password},256),#{id},#{phone},#{age})
+	</insert>
+	<!-- 회원정보 수정 -->
+	<update id="updateMember" parameterType="Member">
+		update member999 set phone=#{phone}, age=#{age} where idx=#{idx}
+	</update>
+	<!-- 현재비밀번호 체크 -->
+	<select id="selectPassword" parameterType="java.util.HashMap" resultType="String">
+		select password from member999 where idx = #{idx} and password=sha2(#{password},256)
+	</select>
+	<!-- 비밀번호 수정 -->
+	<update id="updatePassword" parameterType="java.util.HashMap">
+		update member999 set password=sha2(#{password},256) where idx=#{idx}
+	</update>
+	<!-- 아이디 찾기 -->
+	<select id="selectId" parameterType="Member" resultType="String">
+		select id from member999 where name=#{name} and phone=#{phone}
+	</select>
+	<!-- 비밀번호 찾기 조건 -->
+	<select id="selectPw" parameterType="java.util.HashMap" resultType="Member">
+		select * from member999 where id=#{id} and phone=#{phone}
+	</select>
+	<!-- 회원탈퇴 -->
+	<delete id="deleteMember" parameterType="int">
+		delete from member999 where idx=#{idx}
+	</delete>
+	<!-- 찜하기 -->
+	<insert id="insertLike" parameterType="java.util.HashMap">
+		insert into s_like(m_idx, s_idx) values(#{m_idx},#{s_idx})
+	</insert>
+	<!-- 마이페이지에서 맛집 찜목록 불러올때 필요한 맛집 idx-->
+	<select id="selectLikeList" parameterType="int" resultType="S_like">
+		select * from s_like where m_idx= #{m_idx}
+	</select>
+	<!-- 맛집에서 찜 체크 여부  -->
+	<select id="selectLikeStore" parameterType="java.util.HashMap" resultType="String">
+		select idx from s_like where s_idx=#{s_idx} and m_idx=#{m_idx}
+	</select>
+	<!-- 찜 개수 -->
+	<select id="selectLikeCount" parameterType="int" resultType="int">
+		select count(idx) from s_like where s_idx= #{s_idx}
+	</select>
+	<!-- 마이페이지에서 찜목록 삭제 -->
+	<delete id="deleteMemberLike" parameterType="int">
+		delete from s_like where idx= #{idx}
+	</delete>
+	<!-- 맛집에서 찜 체크 해제 맛집idx와 멤버idx가 일치하는 좋아요를 삭제-->
+	<delete id="deleteStoreLike" parameterType="java.util.HashMap">
+		delete from s_like where m_idx=#{m_idx} and s_idx= #{s_idx}
+	</delete>
+</mapper>
+
+
+
+
+
+
+
+

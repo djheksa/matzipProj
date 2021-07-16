@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gb.myproject.store.mapper.StoreMapper"> <!-- namespace : java 인터페이스와 매핑될 파일 지정 -->
+<insert id="insert" parameterType="Store">
+		insert into store(s_name,s_idx,s_addr,station,s_phone,s_url,x,y) values
+		 (#{s_name},#{s_idx},#{s_addr},#{station},#{s_phone},#{s_url},#{x},#{y})
+	</insert>
+	<select id="getStoreMap" parameterType="String" resultType="Store">
+		select * from store where station=#{station}
+	</select>
+	<delete id="reset">
+		delete from store 
+	</delete>
+	<select id="getStationName" resultType="Station">
+		select st_name from station
+	</select>
+	<select id="getStoreInfo" parameterType="String" resultType="Store">
+		select * from store where s_idx=#{s_idx}
+	</select>
+</mapper>
+
+

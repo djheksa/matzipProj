@@ -1,0 +1,268 @@
+@charset "UTF-8";
+html,body{
+	font-family: 'Nanum Gothic', sans-serif;
+width:100%;
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: 100%;
+   background-color: #F2F2F2;	
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+/* 테두리 공동 설정*/
+.box{
+   border: 1px solid #FAFAFA;
+   background-color: #FAFAFA;
+   border-radius: 30px;
+}
+
+
+
+/*가게 이미지와 상세정보*/
+.storeBg{
+	position: relative;
+	height:1600px;
+    width: 100%;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.store_Title{
+    margin-top: 60px;
+    padding: 50px;
+    color:  #000;
+    font-size: 3rem;
+    text-align: center;
+}
+
+.subTitle{
+	margin-top:10px;
+    font-size: 2.5rem;
+    color: #000;
+}
+
+
+hr{
+	width:70%;
+	width:600px;
+   height:2px;
+   background-color: #6E6E6E;
+}
+.descItem {
+   list-style:none;
+   padding-left:0px;
+   border: 2px solid #6E6E6E;
+   width:500px;
+   height:50px;
+   margin:30px;
+}
+.reviewsItem{  
+list-style:none;
+   padding-left:0px;
+   border: 2px solid #6E6E6E;
+   width:500px;
+   height:50px;
+   margin:30px;
+	
+}
+.descItem a{
+    text-decoration: none;
+    color: black;
+}
+
+
+
+/* ---------------------가게 약도------------------------ */
+/* 가게이미지 */
+#store_img{
+    width: 45%;
+    height: 600px;
+    text-align: center;
+}
+
+/* 사진 */
+#img{
+    width:100%;
+    height:428px;
+    overflow:scroll;
+    text-align:center;
+    }
+
+    #img img{
+        margin:20px;
+    }
+
+    /*하트,별 버튼 기본 css 삭제*/
+    .material-icons {
+        background-color: transparent;
+        background-image: none !important;
+        border-color: transparent ;
+        border: none;
+    }
+    #btn_like{
+     background-color: transparent !important;
+     }
+.back{
+    font-weight: bold;
+    font-size: 15px;
+    color:white;
+   border: 2px solid #fff;
+   background-color: #000;
+   width:70px;
+   height:70px;
+   border-radius:20px;
+    margin-left: 2.5%;
+}
+
+.back:hover{
+    cursor: pointer;
+    color:#000;
+    background-color: #fff;
+}
+
+    /* ------------가게 상세정보----------------------- */
+    #store_desc{
+        width: 45%;
+        height: 600px;
+        text-align: center;
+    }
+    
+    .descContainer{
+        padding: 0;
+        height: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .descItem{
+        list-style: none;
+        width: 70%;
+        margin-left: 15%;
+        margin-right: 15%;
+        margin-bottom: 30px;
+        line-height: 50px;
+    }
+	.descItem .head{
+		float:left;
+		border-right-width: 0.2em;
+		border-right-style: solid;
+		border-right-color: #6E6E6E;
+		width:20%;
+	}
+    /*------------------------가게리뷰-------------------- */
+
+#store_review{
+	color:#000;
+    width:1000px;
+   height:700px;
+    margin-top: 50px;
+}
+
+#review_title{
+    text-align: center;
+}
+
+#review_write{
+	width:100%;
+	height:150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* #review_write input[type="text"]{
+    width: 30%;
+	height:100px;
+    border: 2px solid gray;
+} */
+
+#btnReview{
+    border: 0;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 25px;
+    width: 100px;
+    height:100px;
+
+}
+
+#btnReview:hover{
+    cursor: pointer;
+    color: grey;
+}
+
+#review{
+    width: 300px;
+    height: 60%;
+    vertical-align: middle;
+    margin-right: 20px;
+}
+
+#reviews{
+    width: 80%;
+    height: 450px;
+    margin-left: 10%;
+    overflow-y: scroll;
+}
+
+.reviewsItem{
+    width: 80%;
+    margin: 2% 10%;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#content{
+    height: 50px;
+}
+
+
+
+/*리뷰 별 */
+.star:hover{
+	color:yellow;
+}
+.clicked{
+	color:yellow;
+}
+
+
+/* --------------------반응형 웹------------------ */
+@media screen and (max-width: 650px) {
+    .storeBg{
+        display: flex;
+        flex-direction: column;
+    }
+
+    #store_img{
+        width: 90%;
+        margin-left: 5%;
+        margin-bottom: 30px;
+    }
+    
+    #store_desc{
+        width: 90%;
+        margin-left: 5%;
+        margin-bottom: 30px;
+    }
+    
+    #store_review{
+        width: 90%;
+        margin-left: 5%;
+        margin-bottom: 30px;
+        margin-top: 0;
+    }
+
+    #review_write input[type="text"]{
+        width: 50%;
+        height:100px;	
+    }
+}
