@@ -2,7 +2,14 @@
 맛집철도999 프로젝트
 
 ● 카카오API를 활용한 맛집정보 , 회원관리(카카오로그인) , 카카오지도 서비스 구현
+  
+  --저는 기획부터 회원관리, 카카오로그인은 추가 동의를 받아 회원가입부터 로그인까지, 로그인, 게시판 일부 ajax처리, 카카오맵 구현을 맡았습니다.
+  
+  ![맛집_메인](https://user-images.githubusercontent.com/86863254/127944684-4c971497-3955-4bcc-903c-575e976a37a1.png)
+  #프로젝트설명
+  ![맛집_설명](https://user-images.githubusercontent.com/86863254/127944687-1d0cc8ed-0acf-4da3-b1cb-d2bb34bc14bd.png)
 
+  
   1. 카카오 로그인 구현 사용자 동의 목록 추가 ex) email..등
   ![카카오로그인](https://user-images.githubusercontent.com/86863254/127943613-3d6055bc-e819-474f-8bd3-cdedc0f0c6ad.png)
   2. 카카오맵 구현
