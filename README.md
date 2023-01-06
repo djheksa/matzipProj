@@ -6,7 +6,7 @@
  ### 프로젝트설명
  <img src="https://user-images.githubusercontent.com/86863254/127944684-4c971497-3955-4bcc-903c-575e976a37a1.png" width="49%"> <img src="https://user-images.githubusercontent.com/86863254/127944687-1d0cc8ed-0acf-4da3-b1cb-d2bb34bc14bd.png" width="49%">
 
- /* 
+
 ### 1. 카카오 로그인 구현
   
   <img src="https://user-images.githubusercontent.com/86863254/127943613-3d6055bc-e819-474f-8bd3-cdedc0f0c6ad.png" width="80%">
@@ -19,4 +19,3 @@
 
 <img src="https://user-images.githubusercontent.com/86863254/127943185-99e8658c-2e9a-41bb-a0a2-4347fb424ca2.png" width="80%">
 
- */
